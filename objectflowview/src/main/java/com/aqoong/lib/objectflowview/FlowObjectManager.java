@@ -3,6 +3,7 @@ package com.aqoong.lib.objectflowview;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -44,6 +45,7 @@ public class FlowObjectManager {
     public View ConvertObjectToView(){
         LinearLayout.LayoutParams commonParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         commonParams.setMarginEnd(20);
+        commonParams.gravity = Gravity.CENTER_VERTICAL;
 
         LinearLayout resultView = new LinearLayout(mContext);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -69,9 +71,17 @@ public class FlowObjectManager {
         }
 
         return resultView;
-//        playCarousel();
-//
-//        return recyclerView;
+    }
+
+    public ArrayList<FlowObject> getFlowObjectList(){
+        return this.objectList;
+    }
+
+    public void addFlowObject(FlowObject object){
+        if(this.objectList == null) {
+            this.objectList = new ArrayList<>();
+        }
+        this.objectList.add(object);
     }
 
 }

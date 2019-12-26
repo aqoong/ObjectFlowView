@@ -43,8 +43,12 @@ public class TestFragment extends Fragment {
     }
 
     private FlowObjectManager setData(){
-        FlowObject[] objects = new FlowObject[10];
-        for(int i = 0 ; i < 10 ; i++){
+        FlowObject[] objects = new FlowObject[15];
+        FlowObject tempObject = new FlowObject();
+        tempObject.setType(FlowObject.ObjectType.TYPE_EMOTICON);
+        tempObject.setImgSrc(R.drawable.ic_launcher_foreground);
+        objects[0] = tempObject;
+        for(int i = 1 ; i < 15 ; i++){
             FlowObject object = new FlowObject();
             object.setType(FlowObject.ObjectType.TYPE_TEXT);
             object.setStrText("TEST입니다. index : "+i);
