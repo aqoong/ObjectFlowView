@@ -2,6 +2,7 @@ package com.aqoong.lib.objectflowview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -38,6 +39,8 @@ public class ObjectFlowView extends HorizontalScrollView {
     private boolean isPlaying = false;
 
     private int mDuration = 0;
+    private float mTextSize;
+    private int mTextColor;
 
 
     public ObjectFlowView(Context context) {
@@ -50,6 +53,8 @@ public class ObjectFlowView extends HorizontalScrollView {
         try {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ObjectFlowView);
             mDuration = ta.getInt(R.styleable.ObjectFlowView_animDuration, 2000);
+            mTextSize = ta.getFloat(R.styleable.ObjectFlowView_textSize, 50);
+            mTextColor = ta.getColor(R.styleable.ObjectFlowView_textColor, Color.BLACK);
             ta.recycle();
         }catch(NullPointerException e){
             e.printStackTrace();
@@ -130,7 +135,7 @@ public class ObjectFlowView extends HorizontalScrollView {
         }
         this.flowManager = manager;
 
-        contentView = this.flowManager.ConvertObjectToView();
+        contentView = this.flowManager.ConvertObjectToView(mTextSize, mTextColor);
         setAnimation(contentView);
 
         this.invalidate();

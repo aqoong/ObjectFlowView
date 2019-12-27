@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.TextViewCompat;
+
 import java.util.ArrayList;
 
 /**
@@ -42,7 +45,7 @@ public class FlowObjectManager {
 
     }
 
-    public View ConvertObjectToView(){
+    public View ConvertObjectToView(float textSize, int textColor){
         LinearLayout.LayoutParams commonParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         commonParams.setMarginEnd(20);
         commonParams.gravity = Gravity.CENTER_VERTICAL;
@@ -55,11 +58,11 @@ public class FlowObjectManager {
 
         for(FlowObject object : objectList){
             if(object.getType() == FlowObject.ObjectType.TYPE_TEXT){
-                TextView textView = new TextView(mContext);
+                AppCompatTextView textView = new AppCompatTextView(mContext);
                 textView.setLayoutParams(commonParams);
                 textView.setText(object.getStrText());
-                textView.setTextColor(Color.BLACK);
-                textView.setTextSize(25);
+                textView.setTextColor(textColor);
+                textView.setTextSize(textSize);
                 resultView.addView(textView);
             }else{
                 ImageView imageView = new ImageView(mContext);
