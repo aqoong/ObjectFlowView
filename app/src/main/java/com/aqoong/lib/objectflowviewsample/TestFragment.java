@@ -40,6 +40,15 @@ public class TestFragment extends Fragment {
 
         vObjectFlow = view.findViewById(R.id.objectflow);
         vObjectFlow.setFlowObjectManager(setData());
+
+        view.findViewById(R.id.button_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(vObjectFlow.isPlaying()) {
+                    vObjectFlow.setFlowObjectManager(setData2());
+                }
+            }
+        });
     }
 
     private FlowObjectManager setData(){
@@ -52,6 +61,23 @@ public class TestFragment extends Fragment {
             FlowObject object = new FlowObject();
             object.setType(FlowObject.ObjectType.TYPE_TEXT);
             object.setStrText("TEST입니다. index : "+i);
+            objects[i] = object;
+        }
+
+        FlowObjectManager manager = new FlowObjectManager(getContext(), objects);
+        return manager;
+    }
+
+    private FlowObjectManager setData2(){
+        FlowObject[] objects = new FlowObject[40];
+        FlowObject tempObject = new FlowObject();
+        tempObject.setType(FlowObject.ObjectType.TYPE_EMOTICON);
+        tempObject.setImgSrc(R.drawable.ic_launcher_foreground);
+        objects[0] = tempObject;
+        for(int i = 1 ; i < 40 ; i++){
+            FlowObject object = new FlowObject();
+            object.setType(FlowObject.ObjectType.TYPE_TEXT);
+            object.setStrText("TEST2입니다. index : "+i);
             objects[i] = object;
         }
 

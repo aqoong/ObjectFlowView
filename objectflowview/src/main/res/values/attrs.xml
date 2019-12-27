@@ -2,6 +2,7 @@
 <resources>
 
     <declare-styleable name="ObjectFlowView">
+        <attr name="animDuration" format="integer"></attr>
 
     </declare-styleable>
 </resources>
