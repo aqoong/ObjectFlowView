@@ -79,7 +79,7 @@ public class FlowObjectManager {
                 imageView.setImageResource(object.getImgSrc());
                 if(isAlpha){
                     imageView.setAlpha(0f);
-                    imageView.setBackgroundTintMode(PorterDuff.Mode.SRC_OVER);
+                    imageView.setBackgroundTintMode(PorterDuff.Mode.CLEAR);
                 }
                 imageView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 resultView.addView(imageView);
