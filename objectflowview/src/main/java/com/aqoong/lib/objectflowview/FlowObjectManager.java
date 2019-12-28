@@ -9,12 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.content.ContextCompat;
-import androidx.core.widget.TextViewCompat;
 
 import java.util.ArrayList;
 
@@ -70,12 +66,19 @@ public class FlowObjectManager {
                 textView.setTextColor(textColor);
                 textView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
+                if(object.isAlpha())
+                {
+                    textView.setTextColor(Color.parseColor(object.getBackgroundColor()));
+                }
                 resultView.addView(textView);
             }else{
                 ImageView imageView = new ImageView(mContext);
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setLayoutParams(commonParams);
                 imageView.setImageResource(object.getImgSrc());
+                if(object.isAlpha()){
+                    imageView.setAlpha(1f);
+                }
                 imageView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 resultView.addView(imageView);
             }

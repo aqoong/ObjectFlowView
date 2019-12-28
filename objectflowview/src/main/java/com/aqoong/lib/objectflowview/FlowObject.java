@@ -22,6 +22,7 @@ public class FlowObject {
     private String strText;
     private int imgSrc;
     private String backgroundColor;
+    private boolean isAlpha;
 
 
     public int getViewTime() {
@@ -65,5 +66,13 @@ public class FlowObject {
 
     public void setBackgroundColor(String backgroundColor) {
         this.backgroundColor = backgroundColor;
+    }
+
+    public boolean isAlpha() {
+        return isAlpha;
+    }
+
+    public void setAlpha(boolean alpha) {
+        isAlpha = alpha;
     }
 }
