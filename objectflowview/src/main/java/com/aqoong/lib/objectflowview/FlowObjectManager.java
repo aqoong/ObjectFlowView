@@ -68,7 +68,7 @@ public class FlowObjectManager {
                 textView.setLayoutParams(commonParams);
                 textView.setText(object.getStrText());
                 textView.setTextColor(textColor);
-                textView.setBackgroundColor(Color.parseColor(object.getImgBackgroundColor()));
+                textView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
                 resultView.addView(textView);
             }else{
@@ -76,7 +76,7 @@ public class FlowObjectManager {
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setLayoutParams(commonParams);
                 imageView.setImageResource(object.getImgSrc());
-                imageView.setBackgroundColor(Color.parseColor(object.getImgBackgroundColor()));
+                imageView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 resultView.addView(imageView);
             }
 

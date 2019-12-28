@@ -21,7 +21,7 @@ public class FlowObject {
     private int type;
     private String strText;
     private int imgSrc;
-    private String imgBackgroundColor;
+    private String backgroundColor;
 
 
     public int getViewTime() {
@@ -56,11 +56,14 @@ public class FlowObject {
         this.imgSrc = imgSrc;
     }
 
-    public String getImgBackgroundColor() {
-        return imgBackgroundColor;
+    public String getBackgroundColor() {
+        if(backgroundColor == null){
+            backgroundColor = "#FFFFFF";
+        }
+        return backgroundColor;
     }
 
-    public void setImgBackgroundColor(String imgBackgroundColor) {
-        this.imgBackgroundColor = imgBackgroundColor;
+    public void setBackgroundColor(String backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 }
