@@ -30,6 +30,7 @@ public class FlowObjectManager {
 
     private Context mContext;
     private ArrayList<FlowObject> objectList;
+    private boolean isAlpha = false;
 
 
     public FlowObjectManager(Context context, FlowObject... objects){
@@ -41,7 +42,6 @@ public class FlowObjectManager {
         }
 
         Log.d(TAG, "init FlowObjectManager / add object size : " + objects.length);
-
     }
 
     public View ConvertObjectToView(float textSize, int textColor, int objectInterval){
@@ -66,7 +66,7 @@ public class FlowObjectManager {
                 textView.setTextColor(textColor);
                 textView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
-                if(object.isAlpha())
+                if(isAlpha)
                 {
                     textView.setTextColor(Color.parseColor(object.getBackgroundColor()));
                 }
@@ -76,7 +76,7 @@ public class FlowObjectManager {
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setLayoutParams(commonParams);
                 imageView.setImageResource(object.getImgSrc());
-                if(object.isAlpha()){
+                if(isAlpha){
                     imageView.setAlpha(1f);
                 }
                 imageView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
@@ -99,4 +99,11 @@ public class FlowObjectManager {
         this.objectList.add(object);
     }
 
+    public boolean isAlpha() {
+        return isAlpha;
+    }
+
+    public void setAlpha(boolean alpha) {
+        isAlpha = alpha;
+    }
 }
