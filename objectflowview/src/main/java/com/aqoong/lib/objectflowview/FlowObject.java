@@ -1,7 +1,5 @@
 package com.aqoong.lib.objectflowview;
 
-import android.graphics.Color;
-
 /**
  * [ObjectFlowViewSample]
  * <p>

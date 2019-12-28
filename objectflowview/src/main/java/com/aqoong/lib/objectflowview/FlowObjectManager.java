@@ -68,6 +68,7 @@ public class FlowObjectManager {
                 textView.setLayoutParams(commonParams);
                 textView.setText(object.getStrText());
                 textView.setTextColor(textColor);
+                textView.setBackgroundColor(Color.parseColor(object.getImgBackgroundColor()));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
                 resultView.addView(textView);
             }else{

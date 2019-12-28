@@ -62,6 +62,7 @@ public class TestFragment extends Fragment {
             FlowObject object = new FlowObject();
             object.setType(FlowObject.ObjectType.TYPE_TEXT);
             object.setStrText("TEST입니다. index : "+i);
+            object.setImgBackgroundColor("#000000");
             objects[i] = object;
         }
 
