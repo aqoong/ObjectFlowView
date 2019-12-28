@@ -38,6 +38,8 @@ public class ObjectFlowView extends HorizontalScrollView {
     private FlowObjectManager flowManager;
     private Queue<FlowObjectManager> flowObjectManagerQueue;
 
+
+    private View parentView; //ScrollView
     private View contentView;
     private boolean isPlaying = false;
 
@@ -75,13 +77,11 @@ public class ObjectFlowView extends HorizontalScrollView {
     private ViewTreeObserver.OnGlobalLayoutListener addViewListener = new ViewTreeObserver.OnGlobalLayoutListener() {
         @Override
         public void onGlobalLayout() {
-            Rect screenSize = new Rect();
-            getWindowVisibleDisplayFrame(screenSize);
 
-            Log.d(TAG, "View width :" + contentView.getMeasuredWidth());
+            Log.d(TAG, "View width :" + parentView.getWidth());
 
             TranslateAnimation translateAnimation = new TranslateAnimation(
-                    screenSize.width(),
+                    parentView.getWidth(),
                     -contentView.getWidth(),
                     0,
                     0
@@ -121,7 +121,7 @@ public class ObjectFlowView extends HorizontalScrollView {
         Log.d(TAG, "call setupView()");
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.objectflowview_layout, this);
+        parentView = inflater.inflate(R.layout.objectflowview_layout, this);
 
         flowObjectManagerQueue = new LinkedList<>();
     }
