@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.HorizontalScrollView;
 
 import androidx.annotation.Nullable;
+
+import org.json.JSONObject;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -39,8 +42,9 @@ public class ObjectFlowView extends HorizontalScrollView {
     private boolean isPlaying = false;
 
     private int mDuration = 0;
-    private float mTextSize;
-    private int mTextColor;
+    private float mTextSize = 0;
+    private int mTextColor = 0;
+    private int mObjectInterval = 0;
 
 
     public ObjectFlowView(Context context) {
@@ -52,9 +56,12 @@ public class ObjectFlowView extends HorizontalScrollView {
 
         try {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ObjectFlowView);
+
             mDuration = ta.getInt(R.styleable.ObjectFlowView_animDuration, 2000);
-            mTextSize = ta.getFloat(R.styleable.ObjectFlowView_textSize, 50);
+            mTextSize = ta.getDimension(R.styleable.ObjectFlowView_textSize, 30);
             mTextColor = ta.getColor(R.styleable.ObjectFlowView_textColor, Color.BLACK);
+            mObjectInterval= ta.getInt(R.styleable.ObjectFlowView_objectInterval, 30);
+
             ta.recycle();
         }catch(NullPointerException e){
             e.printStackTrace();
@@ -81,7 +88,8 @@ public class ObjectFlowView extends HorizontalScrollView {
             );
             translateAnimation.setDuration(flowManager.getFlowObjectList().size() * mDuration);
             translateAnimation.setRepeatCount(Animation.INFINITE);
-            translateAnimation.setFillAfter(true);
+            translateAnimation.setInterpolator(new LinearInterpolator());
+            translateAnimation.setFillAfter(false);
             translateAnimation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
@@ -135,7 +143,7 @@ public class ObjectFlowView extends HorizontalScrollView {
         }
         this.flowManager = manager;
 
-        contentView = this.flowManager.ConvertObjectToView(mTextSize, mTextColor);
+        contentView = this.flowManager.ConvertObjectToView(mTextSize, mTextColor, mObjectInterval);
         setAnimation(contentView);
 
         this.invalidate();

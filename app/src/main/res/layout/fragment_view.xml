@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <com.aqoong.lib.objectflowview.ObjectFlowView
         android:id="@+id/objectflow"
-        app:animDuration="500"
-        app:textSize="120"
+        app:textSize="40sp"
+        app:animDuration="3000"
+        app:objectInterval="50"
+        android:layout_centerVertical="true"
         app:textColor="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/button_test"
-        android:visibility="gone"
         android:text="RESET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-</LinearLayout>
+</RelativeLayout>

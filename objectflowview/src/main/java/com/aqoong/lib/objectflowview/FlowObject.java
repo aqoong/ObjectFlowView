@@ -1,5 +1,7 @@
 package com.aqoong.lib.objectflowview;
 
+import android.graphics.Color;
+
 /**
  * [ObjectFlowViewSample]
  * <p>
@@ -21,6 +23,7 @@ public class FlowObject {
     private int type;
     private String strText;
     private int imgSrc;
+    private String imgBackgroundColor;
 
 
     public int getViewTime() {
@@ -53,5 +56,13 @@ public class FlowObject {
 
     public void setImgSrc(int imgSrc) {
         this.imgSrc = imgSrc;
+    }
+
+    public String getImgBackgroundColor() {
+        return imgBackgroundColor;
+    }
+
+    public void setImgBackgroundColor(String imgBackgroundColor) {
+        this.imgBackgroundColor = imgBackgroundColor;
     }
 }

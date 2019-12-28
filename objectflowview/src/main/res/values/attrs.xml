@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="textSize" format="dimension|float"></attr>
+    <attr name="textSize" format="dimension"></attr>
     <attr name="textColor" format="color"></attr>
 
     <declare-styleable name="ObjectFlowView">
         <attr name="animDuration" format="integer"></attr>
+        <attr name="objectInterval" format="integer"></attr>
         <attr name="textSize"></attr>
         <attr name="textColor"></attr>
+
     </declare-styleable>
 </resources>

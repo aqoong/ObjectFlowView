@@ -56,6 +56,7 @@ public class TestFragment extends Fragment {
         FlowObject tempObject = new FlowObject();
         tempObject.setType(FlowObject.ObjectType.TYPE_EMOTICON);
         tempObject.setImgSrc(R.drawable.ic_launcher_foreground);
+        tempObject.setImgBackgroundColor("#000000");
         objects[0] = tempObject;
         for(int i = 1 ; i < 15 ; i++){
             FlowObject object = new FlowObject();

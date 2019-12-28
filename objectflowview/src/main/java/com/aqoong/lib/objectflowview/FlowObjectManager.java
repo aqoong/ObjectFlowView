@@ -3,14 +3,17 @@ package com.aqoong.lib.objectflowview;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.core.widget.TextViewCompat;
 
 import java.util.ArrayList;
@@ -45,13 +48,16 @@ public class FlowObjectManager {
 
     }
 
-    public View ConvertObjectToView(float textSize, int textColor){
-        LinearLayout.LayoutParams commonParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        commonParams.setMarginEnd(20);
+    public View ConvertObjectToView(float textSize, int textColor, int objectInterval){
+        LinearLayout.LayoutParams commonParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        commonParams.setMarginEnd(objectInterval);
         commonParams.gravity = Gravity.CENTER_VERTICAL;
 
         LinearLayout resultView = new LinearLayout(mContext);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        params.gravity = Gravity.CENTER_VERTICAL;
+        resultView.setGravity(Gravity.CENTER_VERTICAL);
+
 
         resultView.setLayoutParams(params);
         resultView.setOrientation(LinearLayout.HORIZONTAL);
@@ -62,12 +68,14 @@ public class FlowObjectManager {
                 textView.setLayoutParams(commonParams);
                 textView.setText(object.getStrText());
                 textView.setTextColor(textColor);
-                textView.setTextSize(textSize);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
                 resultView.addView(textView);
             }else{
                 ImageView imageView = new ImageView(mContext);
+                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setLayoutParams(commonParams);
                 imageView.setImageResource(object.getImgSrc());
+                imageView.setBackgroundColor(Color.parseColor(object.getImgBackgroundColor()));
                 resultView.addView(imageView);
             }
 
