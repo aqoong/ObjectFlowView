@@ -76,6 +76,7 @@ public class FlowObjectManager {
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setLayoutParams(commonParams);
                 imageView.setImageResource(object.getImgSrc());
+                imageView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 if(isAlpha){
                     imageView.setAlpha(0f);
                 }
