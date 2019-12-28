@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_layout, new TestFragment()).commitAllowingStateLoss();
+
+        ObjectFlowView view = findViewById(R.id.objectflow);
+
     }
 
 }

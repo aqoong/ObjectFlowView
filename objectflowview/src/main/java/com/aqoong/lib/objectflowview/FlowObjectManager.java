@@ -2,6 +2,7 @@ package com.aqoong.lib.objectflowview;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -76,9 +77,9 @@ public class FlowObjectManager {
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setLayoutParams(commonParams);
                 imageView.setImageResource(object.getImgSrc());
-                imageView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 if(isAlpha){
                     imageView.setAlpha(0f);
+                    imageView.setBackgroundTintMode(PorterDuff.Mode.SRC_OVER);
                 }
                 imageView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 resultView.addView(imageView);
