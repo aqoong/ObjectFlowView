@@ -78,8 +78,6 @@ public class ObjectFlowView extends HorizontalScrollView {
         @Override
         public void onGlobalLayout() {
 
-            Log.d(TAG, "View width :" + parentView.getWidth());
-
             TranslateAnimation translateAnimation = new TranslateAnimation(
                     parentView.getWidth(),
                     -contentView.getWidth(),
@@ -113,7 +111,9 @@ public class ObjectFlowView extends HorizontalScrollView {
                     }
                 }
             });
-            contentView.setAnimation(translateAnimation);
+            if(!isPlaying) {
+                contentView.setAnimation(translateAnimation);
+            }
         }
     };
 
