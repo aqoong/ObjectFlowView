@@ -143,6 +143,7 @@ public class ObjectFlowView extends HorizontalScrollView {
         }
         this.flowManager = manager;
 
+        this.removeAllViews();
         contentView = this.flowManager.ConvertObjectToView(mTextSize, mTextColor, mObjectInterval);
         setAnimation(contentView);
 
@@ -154,8 +155,6 @@ public class ObjectFlowView extends HorizontalScrollView {
     }
 
     public boolean isPlaying(){return this.isPlaying;}
-
-
 
 
 

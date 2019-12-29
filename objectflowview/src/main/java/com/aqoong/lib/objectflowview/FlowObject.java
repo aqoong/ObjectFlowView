@@ -22,6 +22,8 @@ public class FlowObject {
     private String strText;
     private int imgSrc;
     private String backgroundColor;
+    private String textColor;
+    private float textSize;
 
 
     public int getViewTime() {
@@ -67,4 +69,19 @@ public class FlowObject {
         this.backgroundColor = backgroundColor;
     }
 
+    public String getTextColor() {
+        return textColor;
+    }
+
+    public void setTextColor(String textColor) {
+        this.textColor = textColor;
+    }
+
+    public float getTextSize() {
+        return textSize;
+    }
+
+    public void setTextSize(float textSize) {
+        this.textSize = textSize;
+    }
 }

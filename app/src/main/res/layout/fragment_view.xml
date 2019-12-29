@@ -8,7 +8,7 @@
     <com.aqoong.lib.objectflowview.ObjectFlowView
         android:id="@+id/objectflow"
         app:textSize="40sp"
-        app:animDuration="3000"
+        app:animDuration="1500"
         app:objectInterval="50"
         android:layout_centerVertical="true"
         app:textColor="@android:color/white"

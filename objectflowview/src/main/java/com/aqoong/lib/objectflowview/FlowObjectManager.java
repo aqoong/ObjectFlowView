@@ -64,12 +64,13 @@ public class FlowObjectManager {
                 AppCompatTextView textView = new AppCompatTextView(mContext);
                 textView.setLayoutParams(commonParams);
                 textView.setText(object.getStrText());
-                textView.setTextColor(textColor);
+                textView.setTextColor(Color.parseColor(object.getTextColor()));
                 textView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
                 if(isAlpha)
                 {
                     textView.setTextColor(Color.parseColor(object.getBackgroundColor()));
+                    textView.setBackgroundTintMode(PorterDuff.Mode.CLEAR);
                 }
                 resultView.addView(textView);
             }else{

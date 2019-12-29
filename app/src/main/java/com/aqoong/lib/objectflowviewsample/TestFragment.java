@@ -52,16 +52,17 @@ public class TestFragment extends Fragment {
     }
 
     private FlowObjectManager setData(){
-        FlowObject[] objects = new FlowObject[15];
+        FlowObject[] objects = new FlowObject[3];
         FlowObject tempObject = new FlowObject();
         tempObject.setType(FlowObject.ObjectType.TYPE_EMOTICON);
         tempObject.setImgSrc(R.drawable.ic_launcher_foreground);
         tempObject.setBackgroundColor("#000000");
         objects[0] = tempObject;
-        for(int i = 1 ; i < 15 ; i++){
+        for(int i = 1 ; i < 3 ; i++){
             FlowObject object = new FlowObject();
             object.setType(FlowObject.ObjectType.TYPE_TEXT);
             object.setStrText("TEST입니다. index : "+i);
+            object.setTextColor("#FFFFFF");
             object.setBackgroundColor("#000000");
             objects[i] = object;
         }
@@ -71,15 +72,18 @@ public class TestFragment extends Fragment {
     }
 
     private FlowObjectManager setData2(){
-        FlowObject[] objects = new FlowObject[40];
+        FlowObject[] objects = new FlowObject[5];
         FlowObject tempObject = new FlowObject();
         tempObject.setType(FlowObject.ObjectType.TYPE_EMOTICON);
         tempObject.setImgSrc(R.drawable.ic_launcher_foreground);
+        tempObject.setBackgroundColor("#000000");
         objects[0] = tempObject;
-        for(int i = 1 ; i < 40 ; i++){
+        for(int i = 1 ; i < 5 ; i++){
             FlowObject object = new FlowObject();
             object.setType(FlowObject.ObjectType.TYPE_TEXT);
             object.setStrText("TEST2입니다. index : "+i);
+            object.setTextColor("#FFFFFF");
+            object.setBackgroundColor("#000000");
             objects[i] = object;
         }
 
