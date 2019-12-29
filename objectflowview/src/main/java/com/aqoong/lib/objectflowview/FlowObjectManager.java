@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
@@ -61,7 +62,7 @@ public class FlowObjectManager {
 
         for(FlowObject object : objectList){
             if(object.getType() == FlowObject.ObjectType.TYPE_TEXT){
-                AppCompatTextView textView = new AppCompatTextView(mContext);
+                TextView textView = new TextView(mContext);
                 textView.setLayoutParams(commonParams);
                 textView.setText(object.getStrText());
                 textView.setTextColor(Color.parseColor(object.getTextColor()));
@@ -72,7 +73,9 @@ public class FlowObjectManager {
                     textView.setTextColor(Color.parseColor(object.getBackgroundColor()));
                     textView.setBackgroundTintMode(PorterDuff.Mode.CLEAR);
                 }
+
                 resultView.addView(textView);
+                Log.d(TAG, "TEXT Created : " + textView.getText() + " / " + textView.getTextSize() + " : / " + textView.getTextColors().toString());
             }else{
                 ImageView imageView = new ImageView(mContext);
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -85,6 +88,7 @@ public class FlowObjectManager {
                 }
                 imageView.setBackgroundColor(Color.parseColor(object.getBackgroundColor()));
                 resultView.addView(imageView);
+                Log.d(TAG, "IMAGE Created : " + object.getImgSrc()  + " / " + object.getBackgroundColor() );
             }
 
         }
