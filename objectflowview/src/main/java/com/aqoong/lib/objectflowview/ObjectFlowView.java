@@ -89,7 +89,7 @@ public class ObjectFlowView extends HorizontalScrollView {
             translateAnimation.setDuration(flowManager.getFlowObjectList().size() * mDuration);
             translateAnimation.setRepeatCount(Animation.INFINITE);
             translateAnimation.setInterpolator(new LinearInterpolator());
-            translateAnimation.setFillAfter(false);
+            translateAnimation.setFillAfter(true);
             translateAnimation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
@@ -144,6 +144,7 @@ public class ObjectFlowView extends HorizontalScrollView {
         this.flowManager = manager;
 
         this.removeAllViews();
+        clearAnimation();
         contentView = this.flowManager.ConvertObjectToView(mTextSize, mTextColor, mObjectInterval);
         setAnimation(contentView);
 

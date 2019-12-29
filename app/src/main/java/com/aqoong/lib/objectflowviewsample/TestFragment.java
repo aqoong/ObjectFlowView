@@ -26,6 +26,7 @@ import com.aqoong.lib.objectflowview.ObjectFlowView;
  */
 public class TestFragment extends Fragment {
     private ObjectFlowView vObjectFlow;
+    private boolean turnOn = true;
 
     @Nullable
     @Override
@@ -44,8 +45,12 @@ public class TestFragment extends Fragment {
         view.findViewById(R.id.button_test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(vObjectFlow.isPlaying()) {
+                if(turnOn) {
                     vObjectFlow.setFlowObjectManager(setData2());
+                    turnOn = false;
+                }else{
+                    vObjectFlow.setFlowObjectManager(setData());
+                    turnOn = true;
                 }
             }
         });

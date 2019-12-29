@@ -75,7 +75,7 @@ public class FlowObjectManager {
                 }
 
                 resultView.addView(textView);
-                Log.d(TAG, "TEXT Created : " + textView.getText() + " / " + textView.getTextSize() + " : / " + textView.getTextColors().toString());
+                Log.d(TAG, "TEXT Created : " + textView.getText() + " / " + textView.getTextSize() + " : / " + object.getTextColor());
             }else{
                 ImageView imageView = new ImageView(mContext);
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
