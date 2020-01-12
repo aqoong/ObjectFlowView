@@ -40,6 +40,7 @@ public class TestFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         vObjectFlow = view.findViewById(R.id.objectflow);
+        vObjectFlow.setTextSize(40);
         vObjectFlow.setFlowObjectManager(setData());
 
         view.findViewById(R.id.button_test).setOnClickListener(new View.OnClickListener() {

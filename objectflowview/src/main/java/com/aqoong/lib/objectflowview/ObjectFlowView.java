@@ -3,11 +3,11 @@ package com.aqoong.lib.objectflowview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -15,8 +15,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.HorizontalScrollView;
 
 import androidx.annotation.Nullable;
-
-import org.json.JSONObject;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -43,9 +41,9 @@ public class ObjectFlowView extends HorizontalScrollView {
     private View contentView;
     private boolean isPlaying = false;
 
-    private int mDuration = 0;
+    private long mDuration = 0;
     private float mTextSize = 0;
-    private int mTextColor = 0;
+    private int mTextColor = -1;
     private int mObjectInterval = 0;
 
 
@@ -59,10 +57,13 @@ public class ObjectFlowView extends HorizontalScrollView {
         try {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ObjectFlowView);
 
-            mDuration = ta.getInt(R.styleable.ObjectFlowView_animDuration, 2000);
-            mTextSize = ta.getDimension(R.styleable.ObjectFlowView_textSize, 30);
-            mTextColor = ta.getColor(R.styleable.ObjectFlowView_textColor, Color.BLACK);
-            mObjectInterval= ta.getInt(R.styleable.ObjectFlowView_objectInterval, 30);
+            setAnimationDuration(ta.getInt(R.styleable.ObjectFlowView_animDuration, 2000));
+            setTextSize(ta.getDimension(R.styleable.ObjectFlowView_textSize, 30));
+            setTextColor(ta.getString(R.styleable.ObjectFlowView_textColor));
+            if(mTextColor == -1){
+                setTextColor(ta.getColor(R.styleable.ObjectFlowView_textColor, Color.BLACK));
+            }
+            setObjectInterval(ta.getInt(R.styleable.ObjectFlowView_objectInterval, 30));
 
             ta.recycle();
         }catch(NullPointerException e){
@@ -119,12 +120,46 @@ public class ObjectFlowView extends HorizontalScrollView {
 
     private void setupView(){
         Log.d(TAG, "call setupView()");
+        removeAllViews();
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         parentView = inflater.inflate(R.layout.objectflowview_layout, this);
 
         flowObjectManagerQueue = new LinkedList<>();
     }
+    public void setAnimationDuration(long duration){
+        this.mDuration = duration;
+        setupView();
+    }
+
+    public void setTextColor(int color){
+        this.mTextColor = color;
+        setupView();
+    }
+    public void setTextColor(String color){
+        this.mTextColor = Color.parseColor(color);
+        setupView();
+    }
+    public void setTextSize(float size){
+        this.mTextSize = size;
+        setupView();
+    }
+    public void setObjectInterval(int interval) {
+        this.mObjectInterval = interval;
+        setupView();
+    }
+
+    public void setTextSetting(String color, float size){
+        setTextSetting(Color.parseColor(color), size);
+    }
+    public void setTextSetting(int color, float size){
+        this.mTextColor = color;
+        this.mTextSize = size;
+
+        setupView();
+    }
+
+
 
     private void setAnimation(View view){
 
@@ -156,7 +191,5 @@ public class ObjectFlowView extends HorizontalScrollView {
     }
 
     public boolean isPlaying(){return this.isPlaying;}
-
-
 
 }
