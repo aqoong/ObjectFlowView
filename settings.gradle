@@ -1,2 +1,2 @@
-include ':app', ':objectflowview'
+include ':app', ':objectflowview', ':objectanimationflowview'
 rootProject.name='ObjectFlowViewSample'

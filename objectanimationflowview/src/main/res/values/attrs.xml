@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textSize" format="dimension"></attr>
+    <declare-styleable name="ObjectAnimationFlowView">
+        <attr name="itemDuration" format="integer"/>
+        <attr name="textSize" ></attr>
+        <attr name="imageStopDuration" format="integer"></attr>
+    </declare-styleable>
+</resources>
